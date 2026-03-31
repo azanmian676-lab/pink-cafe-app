@@ -1,40 +1,33 @@
-# pink-cafe-app
-Python application for the Pink Cafe Bristol project
 # ☕ Pink Cafe App
 
-### Machine Learning Dashboard for Sales Forecasting & Waste Reduction
+### Bakery Sales Prediction Dashboard (Streamlit + Machine Learning)
 
 ---
 
 ## 📊 Project Overview
 
-The **Pink Cafe App** is an interactive data analytics and machine learning dashboard developed using **Streamlit**. It is designed to analyse historical bakery sales data and forecast future demand for products such as coffee and croissants.
+The **Pink Cafe App** is an interactive Streamlit dashboard developed to analyse bakery sales data and forecast future demand.
 
-This system helps improve decision-making by reducing uncertainty in demand prediction and minimizing food waste.
+It supports:
 
----
+* 📈 Sales trend analysis
+* 🤖 Machine learning forecasting
+* 📉 Model evaluation
 
-## 🎯 Objectives
-
-* Analyse historical sales data
-* Identify top-performing products
-* Visualise sales trends
-* Forecast demand for the next **4 weeks**
-* Compare forecasting models
-* Support inventory and production planning
+The system helps improve **inventory planning** and reduce **food waste**.
 
 ---
 
 ## 🚀 Key Features
 
-* 📂 Upload and process CSV datasets
-* 📈 Interactive dashboards using Plotly
-* ☕ Coffee sales analysis (Americano, Cappuccino)
-* 🥐 Croissant sales insights
-* 🤖 Machine Learning model (Gradient Boosting)
-* 📊 Time Series forecasting (SARIMA)
-* 📉 Model evaluation metrics (MAE, RMSE, MAPE)
-* ⚙️ Adjustable training window
+* Upload coffee & croissant datasets
+* Automatic data preprocessing
+* Identify top-selling products
+* Visualise last 4 weeks of sales
+* Forecast next 28 days
+* Compare forecasting models
+* Evaluation metrics (MAE, RMSE, MAPE)
+* Zoom into short forecast windows
 
 ---
 
@@ -42,86 +35,48 @@ This system helps improve decision-making by reducing uncertainty in demand pred
 
 ### 🏠 Main Dashboard
 
-![Main Dashboard](images/dashboard.png)
+![Dashboard](images/dashboard.png)
 
 ### 📈 Sales Trends
 
-![Sales Trends](images/trends.png)
+![Trends](images/trends.png)
 
-### 🤖 Forecast Results
+### 🤖 Forecast Output
 
 ![Forecast](images/forecast.png)
 
 ### 📊 Model Evaluation
 
-![Model Evaluation](images/model.png)
+![Model](images/model.png)
 
 ---
 
-## 🛠️ Technology Stack
+## 🛠️ Technologies Used
 
-* **Python**
-* **Streamlit**
-* **Pandas & NumPy**
-* **Plotly**
-* **Scikit-learn**
-* **Statsmodels**
-
----
-
-## 🧠 Forecasting Models
-
-### 🔹 SARIMA (Statistical Model)
-
-* Captures seasonal patterns
-* Suitable for structured time-series data
-
-### 🔹 Gradient Boosting (Machine Learning)
-
-* Handles complex and non-linear relationships
-* Achieved higher accuracy in this project
+* Python
+* Streamlit
+* Pandas & NumPy
+* Plotly
+* Scikit-learn
+* Statsmodels
 
 ---
 
-## 📂 Project Structure
+## ▶️ How to Run the Project
 
-```
-Pink-Cafe-App/
-│── app.py
-│── data/
-│── images/
-│    ├── dashboard.png
-│    ├── trends.png
-│    ├── forecast.png
-│    ├── model.png
-│── README.md
-│── requirements.txt
-```
-
----
-
-## ▶️ Installation & Setup
-
-### 1. Clone Repository
-
-```
-git clone https://github.com/azanmian676-lab/Pink-Cafe-App.git
-cd Pink-Cafe-App
-```
-
-### 2. Install Dependencies
+### 1. Install dependencies
 
 ```
 pip install -r requirements.txt
 ```
 
-### 3. Run Application
+### 2. Run the app
 
 ```
 streamlit run app.py
 ```
 
-### 4. Open in Browser
+### 3. Open in browser
 
 ```
 http://localhost:8501
@@ -129,30 +84,79 @@ http://localhost:8501
 
 ---
 
-## 📊 Dataset Details
+## 📂 Required Input Files
 
-* 📅 Period: March 2025 – October 2025
-* 📦 Records: 690 daily entries
-* ☕ Products: Americano, Cappuccino
-* 🥐 Product: Croissant
+⚠️ You MUST upload BOTH files in the app:
+
+### ☕ Coffee CSV
+
+* Must contain **Date column**
+* First row = coffee product names
+* Remaining columns = sales values
+
+### 🥐 Croissant CSV
+
+* Must contain:
+
+  * Date
+  * Number Sold
 
 ---
 
-## 📈 Results & Insights
+## ⚙️ How the App Works
 
-* Sales trends show consistent coffee demand
-* Croissant demand varies more frequently
-* Gradient Boosting outperformed SARIMA
-* Forecasting improves planning accuracy
+1. Upload both CSV files
+2. Select:
+
+   * Training window (4–8 weeks)
+   * Model (SARIMA / Gradient Boosting)
+   * Zoom days
+3. Click **Run Forecasts**
 
 ---
 
-## 🎯 Business Impact
+## 📊 Dashboard Sections
 
-* 📉 Reduced food waste
-* 📦 Improved inventory control
-* 📊 Better demand forecasting
-* 🧠 Data-driven decision making
+### Dataset Summary
+
+* Total rows, date range, preview
+
+### Last 4 Weeks Trends
+
+* Recent sales patterns
+
+### Forecast (Next 4 Weeks)
+
+* Graph + table + zoom view
+
+### Accuracy
+
+* MAE, RMSE, MAPE
+
+---
+
+## 🧠 Forecasting Models
+
+### SARIMA
+
+* Seasonal time-series model
+* order = (1,1,1)
+* seasonal_order = (1,1,1,7)
+
+### Gradient Boosting
+
+* Uses lag features
+* Uses rolling averages
+* Captures complex patterns
+
+---
+
+## 📌 Important Notes
+
+* Missing dates are filled with 0
+* Forecast values cannot be negative
+* Metrics require sufficient data
+* Incorrect file format may cause errors
 
 ---
 
@@ -161,18 +165,3 @@ http://localhost:8501
 **Azan**
 GitHub: https://github.com/azanmian676-lab
 
----
-
-## 📌 Notes
-
-* Developed as an academic project
-* Designed for bakery demand forecasting
-* Demonstrates practical use of ML in business
-
----
-
-## ⭐ Acknowledgements
-
-* Streamlit for dashboard framework
-* Scikit-learn & Statsmodels for ML models
-* Plotly for visualisation tools
